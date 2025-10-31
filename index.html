@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rockfold Fitness — Build Your Strength. Break Your Limits.</title>
+  <meta name="description" content="Rockfold Fitness is a premium gym and fitness club. Join for strength training, HIIT, personal coaching, and real transformations. Get a 3‑day free trial." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="Rockfold Fitness — Premium Gym" />
+  <meta property="og:description" content="Join Rockfold Fitness. Strength, community, transformation. 3‑day free trial." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1400&auto=format&fit=crop" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coal: '#0a0a0a',
+            ink: '#0d0d0d',
+            steel: '#141414',
+            burgundy: '#800020',
+            burgundyDark: '#5a0016'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Bebas Neue', 'Impact', 'sans-serif']
+          },
+          boxShadow: {
+            glow: '0 0 40px rgba(128, 0, 32, 0.4), 0 0 80px rgba(128, 0, 32, 0.2)',
+            'glow-sm': '0 0 20px rgba(128, 0, 32, 0.3)'
+          },
+          backgroundImage: {
+            grid: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .backdrop-blur-safari { -webkit-backdrop-filter: saturate(180%) blur(12px); backdrop-filter: saturate(180%) blur(12px); }
+  </style>
+</head>
+<body class="bg-coal text-white antialiased">
+  <!-- Top Announcement Bar -->
+  <div class="w-full bg-ink/90 backdrop-blur-safari text-sm text-gray-300 border-b border-white/5">
+    <div class="mx-auto max-w-7xl px-4 py-2 text-center">Get a <span class="text-burgundy font-semibold">3‑Day Free Trial</span> — DM us on WhatsApp</div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 border-b border-white/5 bg-coal/90 backdrop-blur-safari">
+    <div class="mx-auto max-w-7xl px-4">
+      <div class="flex h-16 items-center justify-between">
+        <a href="#home" class="flex items-center gap-2 group">
+          <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-burgundy to-burgundyDark"></div>
+          <span class="font-display text-xl tracking-wider group-hover:text-burgundy transition-colors">ROCKFOLD FITNESS</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#programs" class="hover:text-white transition-colors">Programs</a>
+          <a href="#trainers" class="hover:text-white transition-colors">Trainers</a>
+          <a href="#pricing" class="hover:text-white transition-colors">Plans</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+          <a href="#cta" class="rounded-xl bg-burgundy px-5 py-2.5 font-semibold text-white shadow-glow-sm hover:bg-burgundyDark transition-all">Free Trial</a>
+        </nav>
+        <button id="navBtn" class="md:hidden inline-flex items-center justify-center rounded-lg border border-white/10 p-2" aria-label="Toggle Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobileMenu" class="hidden md:hidden pb-4">
+        <div class="flex flex-col gap-3 text-gray-300 font-medium">
+          <a href="#about" class="hover:text-white transition-colors">About</a>
+          <a href="#programs" class="hover:text-white transition-colors">Programs</a>
+          <a href="#trainers" class="hover:text-white transition-colors">Trainers</a>
+          <a href="#pricing" class="hover:text-white transition-colors">Plans</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+          <a href="#cta" class="rounded-lg bg-burgundy px-4 py-2 font-semibold text-white">Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1920&auto=format&fit=crop" alt="Athletes training at Rockfold Fitness" class="h-full w-full object-cover opacity-50" />
+      <div class="absolute inset-0 bg-gradient-to-t from-coal via-coal/60 to-transparent"></div>
+      <div class="absolute inset-0 [background-size:16px_16px] bg-grid"></div>
+    </div>
+    <div class="relative mx-auto max-w-7xl px-4 py-28 md:py-40">
+      <div class="max-w-2xl">
+        <p class="hero-subtitle mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-coal/60 backdrop-blur-sm px-3 py-1 text-xs text-gray-300">
+          <span class="inline-block h-2 w-2 animate-pulse rounded-full bg-burgundy"></span>
+          Open 5 AM – 11 PM · Personal & Group Sessions
+        </p>
+        <h1 class="hero-title font-display text-5xl leading-tight md:text-7xl tracking-tight">Build Your Strength.<br class="hidden md:block"/> <span class="text-burgundy">Break Your Limits.</span></h1>
+        <p class="hero-description mt-5 max-w-xl text-lg text-gray-300 leading-relaxed">Join Rockfold Fitness — where discipline becomes power. Cinematic environment, certified coaches, and programs that transform.</p>
+        <div class="hero-buttons mt-8 flex flex-wrap items-center gap-4">
+          <a href="#cta" class="rounded-xl bg-burgundy px-7 py-3.5 font-semibold text-white shadow-glow hover:bg-burgundyDark transition-all">Get 3‑Day Free Trial</a>
+          <a href="#programs" class="rounded-xl border-2 border-white/20 px-7 py-3.5 font-semibold text-white hover:bg-white/5 hover:border-white/30 transition-all">Explore Programs</a>
+          <a href="#gallery" class="text-sm text-gray-300 underline-offset-4 hover:underline hover:text-white transition-colors">See Transformations</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="relative border-t border-white/5 bg-ink">
+    <div class="mx-auto max-w-7xl px-4 py-20 grid gap-12 md:grid-cols-2 items-center">
+      <div class="about-content order-2 md:order-1">
+        <h2 class="font-display text-4xl md:text-5xl tracking-tight">More Than a Gym — <span class="text-burgundy">It's a Lifestyle.</span></h2>
+        <p class="mt-5 text-gray-300 leading-relaxed text-lg">At Rockfold Fitness, we build strength that lasts. From barbell basics to advanced conditioning and nutrition guidance, our coaches help you push beyond limits and stay consistent.</p>
+        <dl class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <div class="rounded-xl border border-white/10 bg-coal/60 p-5">
+            <dt class="text-sm text-gray-400">Trainers</dt>
+            <dd class="mt-1 text-2xl font-bold">Certified</dd>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-coal/60 p-5">
+            <dt class="text-sm text-gray-400">Timings</dt>
+            <dd class="mt-1 text-2xl font-bold">5 AM – 11 PM</dd>
+          </div>
+          <div class="rounded-xl border border-white/10 bg-coal/60 p-5">
+            <dt class="text-sm text-gray-400">Sessions</dt>
+            <dd class="mt-1 text-2xl font-bold">Personal + Group</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="about-image order-1 md:order-2">
+        <div class="relative">
+          <img class="w-full rounded-2xl border border-white/10 shadow-2xl" src="trainee.png" alt="Rockfold Fitness interior" />
+          <div class="absolute -bottom-6 -left-6 hidden md:block rounded-2xl border border-burgundy/30 bg-coal/90 backdrop-blur-sm p-5 shadow-glow max-w-xs">
+            <p class="text-sm text-gray-300 leading-relaxed">"You don't rise to the occasion, you fall to the level of your training."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section id="programs" class="relative border-t border-white/5 bg-coal">
+    <div class="mx-auto max-w-7xl px-4 py-20">
+      <div class="mb-12 flex items-end justify-between gap-6">
+        <div class="programs-title">
+          <h2 class="font-display text-4xl md:text-5xl tracking-tight">Programs That Drive <span class="text-burgundy">Results</span></h2>
+          <p class="mt-3 text-gray-300 text-lg">Push harder. Lift smarter. Achieve more.</p>
+        </div>
+        <a href="#cta" class="hidden md:inline-flex rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium hover:bg-white/5 hover:border-white/30 transition-all">Start Free Trial</a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Card -->
+        <article class="program-card group rounded-2xl border border-white/10 bg-gradient-to-b from-steel to-coal p-5 hover:border-burgundy/30 hover:shadow-glow-sm transition-all">
+          <img class="h-44 w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1517959105821-eaf2591984d8?q=80&w=1200&auto=format&fit=crop" alt="Strength & Conditioning" />
+          <h3 class="mt-4 font-semibold text-lg">Strength & Conditioning</h3>
+          <p class="mt-2 text-sm text-gray-300 leading-relaxed">Progressive overload, compound lifts, perfect form.</p>
+        </article>
+        <article class="program-card group rounded-2xl border border-white/10 bg-gradient-to-b from-steel to-coal p-5 hover:border-burgundy/30 hover:shadow-glow-sm transition-all">
+          <img class="h-44 w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=1200&auto=format&fit=crop" alt="Fat Loss" />
+          <h3 class="mt-4 font-semibold text-lg">Fat Loss Transformation</h3>
+          <p class="mt-2 text-sm text-gray-300 leading-relaxed">HIIT + Metcon + measured nutrition guidance.</p>
+        </article>
+        <article class="program-card group rounded-2xl border border-white/10 bg-gradient-to-b from-steel to-coal p-5 hover:border-burgundy/30 hover:shadow-glow-sm transition-all">
+          <img class="h-44 w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1540490701391-7b9fd3b8e8f3?q=80&w=1200&auto=format&fit=crop" alt="CrossFit & HIIT" />
+          <h3 class="mt-4 font-semibold text-lg">CrossFit & HIIT</h3>
+          <p class="mt-2 text-sm text-gray-300 leading-relaxed">Conditioning that builds engine and grit.</p>
+        </article>
+        <article class="program-card group rounded-2xl border border-white/10 bg-gradient-to-b from-steel to-coal p-5 hover:border-burgundy/30 hover:shadow-glow-sm transition-all">
+          <img class="h-44 w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1558611848-73f7eb4001a1?q=80&w=1200&auto=format&fit=crop" alt="Personal Training" />
+          <h3 class="mt-4 font-semibold text-lg">Personal Training</h3>
+          <p class="mt-2 text-sm text-gray-300 leading-relaxed">1:1 coaching, custom plan, accountability.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trainers -->
+  <section id="trainers" class="relative border-t border-white/5 bg-ink">
+    <div class="mx-auto max-w-7xl px-4 py-20">
+      <div class="trainers-title">
+        <h2 class="font-display text-4xl md:text-5xl tracking-tight">Meet Our <span class="text-burgundy">Trainers</span></h2>
+        <p class="mt-3 text-gray-300 text-lg">A team that lifts with you.</p>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Trainer Card Template -->
+        <article class="trainer-card rounded-2xl border border-white/10 bg-coal/60 p-5 hover:border-burgundy/30 transition-all">
+          <img class="h-64 w-full rounded-xl object-cover" src="1.png" alt="Rohan Patil — Strength Coach" />
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Rohani Patil</h3>
+            <p class="text-sm text-gray-400 mt-1">Strength Coach</p>
+            <a class="mt-2 inline-block text-sm text-burgundy underline-offset-4 hover:underline font-medium" href="#" aria-label="Rohan Instagram">@coach.rohani</a>
+          </div>
+        </article>
+        <article class="trainer-card rounded-2xl border border-white/10 bg-coal/60 p-5 hover:border-burgundy/30 transition-all">
+          <img class="h-64 w-full rounded-xl object-cover" src="2.png" alt="Meera Deshmukh — Transformation Expert" />
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Meera Deshmukh</h3>
+            <p class="text-sm text-gray-400 mt-1">Transformation Expert</p>
+            <a class="mt-2 inline-block text-sm text-burgundy underline-offset-4 hover:underline font-medium" href="#">@meera.lifts</a>
+          </div>
+        </article>
+        <article class="trainer-card rounded-2xl border border-white/10 bg-coal/60 p-5 hover:border-burgundy/30 transition-all">
+          <img class="h-64 w-full rounded-xl object-cover" src="3.png" alt="Akshay Kulkarni — HIIT Coach" />
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Akshay Kulkarni</h3>
+            <p class="text-sm text-gray-400 mt-1">HIIT Coach</p>
+            <a class="mt-2 inline-block text-sm text-burgundy underline-offset-4 hover:underline font-medium" href="#">@akshay.hiit</a>
+          </div>
+        </article>
+        <article class="trainer-card rounded-2xl border border-white/10 bg-coal/60 p-5 hover:border-burgundy/30 transition-all">
+          <img class="h-64 w-full rounded-xl object-cover" src="4.png" alt="Sara Khan — Mobility & Rehab" />
+          <div class="mt-4">
+            <h3 class="font-semibold text-lg">Ramchand Singh</h3>
+            <p class="text-sm text-gray-400 mt-1">Mobility & Rehab</p>
+            <a class="mt-2 inline-block text-sm text-burgundy underline-offset-4 hover:underline font-medium" href="#">@ramchand.moves</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transformations / Gallery -->
+  <section id="gallery" class="relative border-t border-white/5 bg-coal">
+    <div class="mx-auto max-w-7xl px-4 py-20">
+      <div class="md:flex md:items-end md:justify-between">
+        <div>
+          <h2 class="font-display text-4xl md:text-5xl tracking-tight">Real People. <span class="text-burgundy">Real Results.</span></h2>
+          <p class="mt-3 text-gray-300 text-lg">Before / After stories from our community.</p>
+        </div>
+        <a href="#cta" class="mt-4 inline-flex rounded-lg border border-white/20 px-5 py-2.5 text-sm font-medium hover:bg-white/5 hover:border-white/30 transition-all md:mt-0">Start Your Story</a>
+      </div>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <figure class="rounded-2xl border border-white/10 bg-ink p-4 hover:border-burgundy/30 transition-all">
+          <img class="h-80 w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1598971621878-9a62b2a0f3da?q=80&w=1200&auto=format&fit=crop" alt="Before and after transformation 1" />
+          <figcaption class="mt-4 text-sm text-gray-300">Ananya · −8kg in 12 weeks · HIIT + Nutrition</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-white/10 bg-ink p-4 hover:border-burgundy/30 transition-all">
+          <img class="h-80 w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1584467735871-2a2469f5f88d?q=80&w=1200&auto=format&fit=crop" alt="Before and after transformation 2" />
+          <figcaption class="mt-4 text-sm text-gray-300">Rohit · +60kg Deadlift PR · S&C Program</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-white/10 bg-ink p-4 hover:border-burgundy/30 transition-all">
+          <img class="h-80 w-full rounded-xl object-cover" src="https://images.unsplash.com/photo-1594737625785-c6683fc87dbc?q=80&w=1200&auto=format&fit=crop" alt="Before and after transformation 3" />
+          <figcaption class="mt-4 text-sm text-gray-300">Farhan · Back pain relief · Mobility + Rehab</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="relative border-t border-white/5 bg-ink">
+    <div class="mx-auto max-w-7xl px-4 py-20">
+      <h2 class="font-display text-4xl md:text-5xl tracking-tight">Membership <span class="text-burgundy">Plans</span></h2>
+      <p class="mt-3 text-gray-300 text-lg">Choose what fits your grind. Cancel anytime.</p>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <!-- Starter -->
+        <div class="rounded-2xl border border-white/10 bg-coal/60 p-7 hover:border-burgundy/30 transition-all">
+          <h3 class="text-2xl font-semibold">Starter</h3>
+          <p class="mt-2 text-sm text-gray-400">Gym Access + Trainer Guidance</p>
+          <p class="mt-6 text-4xl font-extrabold">₹999<span class="text-lg font-semibold text-gray-400">/mo</span></p>
+          <ul class="mt-8 space-y-3 text-sm text-gray-200">
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Access to all equipment</li>
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Induction + Form checks</li>
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Locker & showers</li>
+          </ul>
+          <a data-wa="Starter" href="#" class="waBtn mt-8 inline-flex w-full justify-center rounded-lg bg-burgundy px-4 py-3.5 font-semibold text-white shadow-glow-sm hover:bg-burgundyDark transition-all">Join via WhatsApp</a>
+        </div>
+        <!-- Pro -->
+        <div class="rounded-2xl border-2 border-burgundy/40 bg-gradient-to-b from-steel to-coal p-7 ring-2 ring-burgundy/20 shadow-glow">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-burgundy/20 px-3 py-1 text-xs text-burgundy font-semibold uppercase tracking-wide">Most Popular</div>
+          <h3 class="text-2xl font-semibold">Pro</h3>
+          <p class="mt-2 text-sm text-gray-400">Group + Personal Sessions</p>
+          <p class="mt-6 text-4xl font-extrabold">₹1999<span class="text-lg font-semibold text-gray-400">/mo</span></p>
+          <ul class="mt-8 space-y-3 text-sm text-gray-200">
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Everything in Starter</li>
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> 8 group classes / month</li>
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> 2 PT sessions / month</li>
+          </ul>
+          <a data-wa="Pro" href="#" class="waBtn mt-8 inline-flex w-full justify-center rounded-lg bg-burgundy px-4 py-3.5 font-semibold text-white shadow-glow hover:bg-burgundyDark transition-all">Join via WhatsApp</a>
+        </div>
+        <!-- Elite -->
+        <div class="rounded-2xl border border-white/10 bg-coal/60 p-7 hover:border-burgundy/30 transition-all">
+          <h3 class="text-2xl font-semibold">Elite</h3>
+          <p class="mt-2 text-sm text-gray-400">Personal Coach + Nutrition</p>
+          <p class="mt-6 text-4xl font-extrabold">₹2999<span class="text-lg font-semibold text-gray-400">/mo</span></p>
+          <ul class="mt-8 space-y-3 text-sm text-gray-200">
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Dedicated 1:1 Coach</li>
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Custom nutrition plan</li>
+            <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Monthly progress review</li>
+          </ul>
+          <a data-wa="Elite" href="#" class="waBtn mt-8 inline-flex w-full justify-center rounded-lg bg-burgundy px-4 py-3.5 font-semibold text-white shadow-glow-sm hover:bg-burgundyDark transition-all">Join via WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="relative border-t border-white/5 bg-coal">
+    <div class="mx-auto max-w-7xl px-4 py-20">
+      <h2 class="font-display text-4xl md:text-5xl tracking-tight">What Members <span class="text-burgundy">Say</span></h2>
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <blockquote class="rounded-2xl border border-white/10 bg-ink p-7 hover:border-burgundy/30 transition-all">
+          <p class="text-gray-200 leading-relaxed">"Rockfold changed how I see fitness. The vibe is elite, the coaching is real."</p>
+          <footer class="mt-5 text-sm text-gray-400">— Aarav, Pune</footer>
+        </blockquote>
+        <blockquote class="rounded-2xl border border-white/10 bg-ink p-7 hover:border-burgundy/30 transition-all">
+          <p class="text-gray-200 leading-relaxed">"Lost 7kg in 10 weeks without crash diets. Systems > motivation."</p>
+          <footer class="mt-5 text-sm text-gray-400">— Priya, Mumbai</footer>
+        </blockquote>
+        <blockquote class="rounded-2xl border border-white/10 bg-ink p-7 hover:border-burgundy/30 transition-all">
+          <p class="text-gray-200 leading-relaxed">"Trainers actually fix your form. My knees finally thank me."</p>
+          <footer class="mt-5 text-sm text-gray-400">— Karan, Pune</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Contact -->
+  <section id="cta" class="relative border-t border-white/5 bg-[url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1920&auto=format&fit=crop')] bg-cover bg-center">
+    <div class="bg-coal/80 backdrop-blur-sm">
+      <div class="mx-auto max-w-7xl px-4 py-24 md:py-32">
+        <div class="grid gap-12 md:grid-cols-2 md:items-center">
+          <div>
+            <h2 class="font-display text-4xl md:text-5xl tracking-tight">It's Time to <span class="text-burgundy">Lift. Sweat. Repeat.</span></h2>
+            <p class="mt-4 text-gray-300 text-lg leading-relaxed">Grab your free trial pass. We'll text you on WhatsApp.</p>
+            <ul class="mt-7 space-y-3 text-sm text-gray-200">
+              <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Day & time of your choice</li>
+              <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> Coach-led induction</li>
+              <li class="flex items-start gap-2"><span class="text-burgundy">✔</span> No credit card required</li>
+            </ul>
+          </div>
+          <form id="leadForm" class="rounded-2xl border border-burgundy/30 bg-coal/90 backdrop-blur-sm p-7 shadow-glow-sm">
+            <div class="grid gap-5">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-300 mb-1.5">Name</label>
+                <input id="name" name="name" required class="w-full rounded-lg border border-white/10 bg-ink px-4 py-3 text-white outline-none ring-burgundy/0 focus:ring-2 focus:ring-burgundy focus:border-burgundy/50 transition-all" placeholder="Your full name" />
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-gray-300 mb-1.5">WhatsApp Number</label>
+                <input id="phone" name="phone" required pattern="[0-9]{10}" class="w-full rounded-lg border border-white/10 bg-ink px-4 py-3 text-white outline-none focus:ring-2 focus:ring-burgundy focus:border-burgundy/50 transition-all" placeholder="10‑digit number" />
+              </div>
+              <div>
+                <label for="goal" class="block text-sm font-medium text-gray-300 mb-1.5">Fitness Goal</label>
+                <select id="goal" name="goal" class="w-full rounded-lg border border-white/10 bg-ink px-4 py-3 text-white outline-none focus:ring-2 focus:ring-burgundy focus:border-burgundy/50 transition-all">
+                  <option>Fat Loss</option>
+                  <option>Muscle Gain</option>
+                  <option>Strength</option>
+                  <option>Mobility & Rehab</option>
+                </select>
+              </div>
+              <button type="submit" class="mt-2 inline-flex items-center justify-center rounded-lg bg-burgundy px-5 py-3.5 font-semibold text-white shadow-glow hover:bg-burgundyDark transition-all">Get Free Trial on WhatsApp</button>
+              <p class="text-xs text-gray-400 text-center">By submitting, you agree to be contacted on WhatsApp. We never spam.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="border-t border-white/5 bg-ink">
+    <div class="mx-auto max-w-7xl px-4 py-16 grid gap-12 md:grid-cols-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="h-8 w-8 rounded-lg bg-gradient-to-br from-burgundy to-burgundyDark"></div>
+          <span class="font-display text-xl tracking-wider">ROCKFOLD FITNESS</span>
+        </div>
+        <p class="mt-4 text-sm text-gray-400 leading-relaxed">Premium gym & fitness club. Strength, community, transformation.</p>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-300">Quick Links</h4>
+        <ul class="mt-4 space-y-2.5 text-sm text-gray-400">
+          <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="#programs" class="hover:text-white transition-colors">Programs</a></li>
+          <li><a href="#pricing" class="hover:text-white transition-colors">Plans</a></li>
+          <li><a href="#cta" class="hover:text-white transition-colors">Free Trial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-300">Location</h4>
+        <ul class="mt-4 space-y-2.5 text-sm text-gray-400">
+          <li>Rockfold Fitness</li>
+          <li>Near PGP Housing Society</li>
+          <li>Keshav Nagar, Mundwa </li>
+          <li>Pune, Maharashtra 411036</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-300">Contact</h4>
+        <ul class="mt-4 space-y-2.5 text-sm text-gray-400">
+          <li>📞 <a id="phoneLink" href="tel:+919999999999" class="hover:text-white transition-colors">+91 99999 99999</a></li>
+          <li>💬 <a id="whLink" href="#" class="hover:text-white transition-colors">WhatsApp us</a></li>
+          <li>✉️ <a href="mailto:hello@rockfoldfitness.com" class="hover:text-white transition-colors">hello@rockfoldfitness.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class=" mx-auto max-w-7xl px-4 py-20 border-t border-white/5 py-6 text-center text-xs text-gray-500 md:flex md:justify-between md:items-center">
+      <span class="">© 2025 Rockfold Fitness. All rights reserved.</span>
+      <span class="mt-1 md:mt-0">Designed and developed by <a href="https://iconicpages.com" class="text-burgundy hover:underline">Iconicpages</a></span>
+    </div>
+  </footer>
+
+  <!-- JSON-LD (Basic LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "Rockfold Fitness",
+    "url": "https://rockfoldfitness.example",
+    "telephone": "+91 99999 99999",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN",
+      "addressRegion": "Maharashtra",
+      "addressLocality": "Your City",
+      "streetAddress": "Near Main Square"
+    },
+    "openingHours": "Mo-Su 05:00-23:00"
+  }
+  </script>
+
+  <!-- Utilities -->
+  <script>
+    // Replace with your WhatsApp number (no spaces). Example: 919876543210
+    const WHATSAPP_NUMBER = '919325152367'; // TODO: set real number
+
+    function buildWaUrl(text) {
+      const encoded = encodeURIComponent(text);
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+    }
+
+    // Hook WhatsApp buttons in Pricing
+    document.querySelectorAll('.waBtn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const plan = btn.getAttribute('data-wa') || 'General';
+        const url = buildWaUrl(`Hi Rockfold Team, I want to join the ${plan} plan. Please help me get started.`);
+        window.open(url, '_blank');
+      });
+    });
+
+    // Mobile nav toggle
+    const navBtn = document.getElementById('navBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    navBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Lead form -> WhatsApp handoff
+    const leadForm = document.getElementById('leadForm');
+    leadForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const goal = document.getElementById('goal').value;
+      const msg = `Free Trial Request:%0AName: ${name}%0APhone: ${phone}%0AGoal: ${goal}`;
+      window.open(buildWaUrl(msg), '_blank');
+      leadForm.reset();
+    });
+
+    // Footer WhatsApp link
+    const whLink = document.getElementById('whLink');
+    if (whLink) whLink.href = buildWaUrl('Hi Rockfold, I would like to know more about memberships.');
+  </script>
+
+
+<script async src='https://d2mpatx37cqexb.cloudfront.net/delightchat-whatsapp-widget/embeds/embed.min.js'></script>
+        <script>
+          var wa_btnSetting = {"btnColor":"#16BE45","ctaText":"WhatsApp Us","cornerRadius":40,"marginBottom":20,"marginLeft":20,"marginRight":20,"btnPosition":"right","whatsAppNumber":"919325152367","welcomeMessage":"Hi Rockfold, I would like to know more about memberships.","zIndex":999999,"btnColorScheme":"light"};
+          window.onload = () => {
+            _waEmbed(wa_btnSetting);
+          };
+</script>
+
+  <!-- GSAP Animations -->
+  <script>
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Navbar animation - fade in from top
+    gsap.from('nav', {
+      y: -100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    // Hero section animations
+    gsap.from('.hero-title', {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-subtitle', {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      delay: 0.5,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-description', {
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      delay: 0.7,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-buttons', {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      delay: 0.9,
+      ease: 'power3.out'
+    });
+
+    // About section animations
+    gsap.from('.about-image', {
+      scrollTrigger: {
+        trigger: '.about-image',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.about-content', {
+      scrollTrigger: {
+        trigger: '.about-content',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    // Programs section animations
+    gsap.from('.programs-title', {
+      scrollTrigger: {
+        trigger: '.programs-title',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.program-card', {
+      scrollTrigger: {
+        trigger: '.program-card',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+
+    // Trainers section animations
+    gsap.from('.trainers-title', {
+      scrollTrigger: {
+        trigger: '.trainers-title',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.trainer-card', {
+      scrollTrigger: {
+        trigger: '.trainer-card',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      scale: 0.8,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'back.out(1.7)'
+    });
+
+    // Pricing section animations
+    gsap.from('.pricing-title', {
+      scrollTrigger: {
+        trigger: '.pricing-title',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.pricing-card', {
+      scrollTrigger: {
+        trigger: '.pricing-card',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+
+    // Contact section animations
+    gsap.from('.contact-title', {
+      scrollTrigger: {
+        trigger: '.contact-title',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.contact-form', {
+      scrollTrigger: {
+        trigger: '.contact-form',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      x: -100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.contact-info', {
+      scrollTrigger: {
+        trigger: '.contact-info',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      },
+      x: 100,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    // Footer animation
+    gsap.from('footer', {
+      scrollTrigger: {
+        trigger: 'footer',
+        start: 'top 90%',
+        toggleActions: 'play none none reverse'
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    // Hover animations for cards
+    const cards = document.querySelectorAll('.program-card, .trainer-card, .pricing-card');
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -10,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    });
+
+    // Button hover animations
+    const buttons = document.querySelectorAll('button, a.inline-block');
+    buttons.forEach(button => {
+      button.addEventListener('mouseenter', () => {
+        gsap.to(button, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+
+      button.addEventListener('mouseleave', () => {
+        gsap.to(button, {
+          scale: 1,
+          duration: 0.3,
+          ease: 'power2.out'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
